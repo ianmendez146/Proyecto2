@@ -4,6 +4,8 @@
  
 import random 
 import os
+import math 
+from copy import deepcopy 
 
 n2 = random.randint(2,2)
 n4 = random.randint(4,4)
