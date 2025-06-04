@@ -1,12 +1,9 @@
- ##proyecto2##
-#Ian Méndez
-#24000146 - C
+#__________proyecto2___________#
+#Ian Méndez        Emelie Perez
+#24000146 - C      24000255 - D
  
 import random 
-import math 
-import re 
 import os
-
 
 n2 = random.randint(2,2)
 n4 = random.randint(4,4)
@@ -135,5 +132,5 @@ def main():
     dibujar_tablero(tablero)    
     limpiar_consola()
 
-    
-main()
+if __name__ == "__main__":
+    main()
