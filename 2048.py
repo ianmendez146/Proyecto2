@@ -118,6 +118,14 @@ def limpiar_consola():
 
 def modo_1v1():
     print("Necesitas amigos para jugar este juego??? ")
+ 
+def casillas_vacias (tablero):
+    contador_casillaV = 0
+    for fila in tablero:
+        for celda in tablero:
+            if celda == 0:
+                contador_casillaV += 1
+    return contador
     
 def main():
     bienvenida()
@@ -131,6 +139,7 @@ def main():
     tecla(tablero)
     dibujar_tablero(tablero)    
     limpiar_consola()
+    casillas_vacias(tablero)
 
 if __name__ == "__main__":
     main()
