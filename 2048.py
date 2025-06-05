@@ -1,12 +1,9 @@
- ##proyecto2##
-#Ian Méndez
-#24000146 - C
+#__________proyecto2___________#
+#Ian Méndez        Emelie Perez
+#24000146 - C      24000255 - D
  
 import random 
-import math 
-import re 
 import os
-
 
 n2 = random.randint(2,2)
 n4 = random.randint(4,4)
@@ -28,6 +25,7 @@ def modo_de_juego():
     elif modo_de_juego_ele == "4":
         print(" Pues no pues, te pierdes de un buen Juego... ADIOS!!!")
         print(" Nos vemos hasta la proxima!! :´D")
+
 
 def crear_tablero ():
     return [[0] * 4 for _ in range(4)]
@@ -64,8 +62,19 @@ def numeros_aleatorios(tablero):
 
 def tecla(tablero):
     while True:
-        tecla = input("Para moverse usa  a, s, w, d. o flechas:  ").lower()
-        if tecla == "w":
+        tecla = input("Para moverse usa  a, s, w, d, q . o flechas:  ").lower() 
+        
+        if tecla == "q":
+            print("Si queires salir escribe enter  ") 
+            input("¡¡¡PERDISTES!!! y sin jugar :/")
+            
+            break 
+
+#################################################################
+#####               ||||TECLAS "W" o "w"|||||||             #####
+#################################################################
+
+        elif tecla == "w":
             for j in range(4): ##columnas
                 valor = []
                 for i in range(4): ##filas 
@@ -82,12 +91,46 @@ def tecla(tablero):
                 valor = list(filter(lambda x: x!= 0, valor))
                 valor += [0] * (4 - len(valor))
                 for i in range(4):
-                    tablero[j][i] = valor[i]
+                    tablero[i][j]=valor [i]
+
+            tablero = numeros_aleatorios(tablero)   
             dibujar_tablero(tablero)
 
             print("arriba")
+
+#################################################################
+#####               ||||TECLAS "A" o "a"|||||||             #####
+#################################################################
+
         elif tecla == "a":
+            for i in range(4):
+                valor=[]
+
+                for j in range(4):
+                    if tablero[i][j] != 0:
+                        valor.append(tablero[i][j])
+                Lia =0
+                while Lia < len(valor) -1:
+                    if valor[Lia] == valor[Lia +1]:
+                        valor[Lia] *=2
+                        valor[Lia+1] = 0
+                        Lia += 2
+                    else:
+                        Lia += 1
+                valor = list(filter(lambda x: x!= 0, valor))
+                valor += [0] * (4 - len(valor))
+                for j in range(4):
+                    tablero[i][j] = valor [j]
+
+            tablero = numeros_aleatorios(tablero)   
+            dibujar_tablero(tablero)
+                        
             print("izquierda")
+
+#################################################################
+#####               ||||TECLAS "S" o "s"|||||||             #####
+#################################################################
+
         elif tecla == "s":
             for j in range(4):
                 valor= []
@@ -107,12 +150,58 @@ def tecla(tablero):
                 valor = valor[::-1]
                 for i in range(4):
                     tablero[i][j] = valor[i]
+
+            tablero = numeros_aleatorios(tablero)                      
             dibujar_tablero(tablero)
             print("atras")
+
+
+#################################################################
+#####               ||||TECLAS "D" o "d"|||||||             #####
+#################################################################
+
+            #TECLA D O d##
+
         elif tecla == "d":
+            for i in range(4):
+                valor=[]
+
+                for j in range(3, -1, -1):
+                    if tablero[i][j] != 0:
+                        valor.append(tablero[i][j])
+                Lid =0
+                while Lid < len(valor) -1:
+                    if valor[Lid] == valor[Lid +1]:
+                        valor[Lid] *=2
+                        valor[Lid+1] = 0
+                        Lid += 2
+                    else:
+                        Lid += 1
+                valor = list(filter(lambda x: x!= 0, valor))
+                valor += [0] * (4 - len(valor))
+                valor= valor[::-1]
+                for j in range(4):
+                    tablero[i][j] = valor [j]
+
+            tablero = numeros_aleatorios(tablero)            
+            dibujar_tablero(tablero)
+
             print("derecha")
-        else:
+
+            
+#################################################################
+#####               ||||TECLAS "INVALIDA"|||||||             #####
+#################################################################
+
+        
+#################################################################
+#####               ||||TECLAS "INVALIDA"|||||||             #####
+#################################################################
+
+        else :
             print("Tecla no valida")
+#############
+#3
 def limpiar_consola():
     if os.name == 'nt': 
         _ = os.system('cls')
@@ -125,15 +214,16 @@ def modo_1v1():
 def main():
     bienvenida()
     modo_de_juego()
+    crear_tablero()
+   # despedida()
     tablero = crear_tablero()
     tablero = numeros_aleatorios(tablero)
     tablero = numeros_aleatorios(tablero)
-    tablero = numeros_aleatorios(tablero)
-    dibujar_tablero(tablero)
+    #dibujar_tablero(tablero)
     limpiar_consola()
     tecla(tablero)
     dibujar_tablero(tablero)    
     limpiar_consola()
 
-    
-main()
+if __name__ == "__main__":
+    main()
