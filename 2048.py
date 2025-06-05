@@ -9,11 +9,14 @@ from copy import deepcopy
 
 n2 = random.randint(2,2)
 n4 = random.randint(4,4)
-
+n2 = random.randint(2,2)
+n4 = random.randint(4,4)
+nombreg = input("Ingrese su nombre: ")
 def bienvenida():
     print("Bienvenido a nuestro Videojuego :D")
-    c = input("Ingrese su nombre: ")
-    print("bienvenido querido jugador ",c)
+    
+    print(f"bienvenido querido jugador {nombreg} ")
+
 
 def modo_de_juego():
     print("¿Qué tipo de modo de juego te gustaría? ")
