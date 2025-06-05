@@ -207,6 +207,13 @@ def tecla(tablero):
 
         else :
             print("Tecla no valida")
+#############
+def Puntuación():
+    print(f"{nombreg} ¡¡¡VAMOS TU PUEDES!!!")
+    suma = puntosw + puntosa + puntoss + puntosd
+    print ("Puntuación: ",suma)
+    if suma == 2048:
+        print(f"{nombreg} ¡¡¡HAS CONSEGUIDO EL RETO!!!!! ")
          
 def limpiar_consola():
     if os.name == 'nt': 
