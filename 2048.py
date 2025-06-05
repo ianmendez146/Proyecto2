@@ -223,14 +223,6 @@ def casillas_vacias (tablero):
             if celda == 0:
                 contador_casillaV += 1
     return contador
- 
-def casillas_vacias (tablero):
-    contador_casillaV = 0
-    for fila in tablero:
-        for celda in tablero:
-            if celda == 0:
-                contador_casillaV += 1
-    return contador
     
 def main():
     bienvenida()
