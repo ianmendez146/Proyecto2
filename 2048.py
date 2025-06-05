@@ -4,6 +4,8 @@
  
 import random 
 import os
+import math 
+from copy import deepcopy 
 
 n2 = random.randint(2,2)
 n4 = random.randint(4,4)
@@ -14,17 +16,28 @@ def bienvenida():
     print("bienvenido querido jugador ",c)
 
 def modo_de_juego():
-    print("Que tipo de modo de juego te gustaría? ")
-    modo_de_juego_ele= input("|| 1. Individual || 2. 1 VS 1 || 3. VS IA || 4. No queiro jugar || : ") ##Cual es el tipo de modo de juego quiera el usuario
-    if modo_de_juego_ele == "1":
-        print("Juega como lobo Solitario entonces :D ")
-    elif modo_de_juego_ele == "2":
-        print("WOOOW TIENES AMIGOS!? ")
-    elif modo_de_juego_ele == "3":
-        print("Humano VS Maquina!!!!! ")
-    elif modo_de_juego_ele == "4":
-        print(" Pues no pues, te pierdes de un buen Juego... ADIOS!!!")
-        print(" Nos vemos hasta la proxima!! :´D")
+    print("¿Qué tipo de modo de juego te gustaría? ")
+    while True:
+        modo_de_juego_ele = input("|| 1. Individual || 2. 1 VS 1 || 3. VS IA || 4. Istrucciones || 5. No quiero jugar || : ").strip()
+
+        if modo_de_juego_ele == "1":
+            print("Juega como lobo Solitario entonces :D ")
+            return modo_de_juego_ele
+        elif modo_de_juego_ele == "2":
+            print("WOOOW TIENES AMIGOS!? ")
+            print("Este modo aún no está implementado.") 
+        elif modo_de_juego_ele == "3":
+            print("Humano VS Máquina!!!!! ")
+            return modo_de_juego_ele
+        elif modo_de_juego_ele == "4": 
+            limpiar_consola()
+            mostrar_instrucciones() 
+            limpiar_consola()
+        elif modo_de_juego_ele == "5":
+            print("Pues no, te pierdes de un buen Juego... ¡ADIOS!!!")
+            return modo_de_juego_ele
+        else:
+            print("Entrada inválida. Por favor, elige una opción válida.")
 
 
 def crear_tablero ():
@@ -187,12 +200,6 @@ def tecla(tablero):
             dibujar_tablero(tablero)
 
             print("derecha")
-
-            
-#################################################################
-#####               ||||TECLAS "INVALIDA"|||||||             #####
-#################################################################
-
         
 #################################################################
 #####               ||||TECLAS "INVALIDA"|||||||             #####
@@ -200,13 +207,29 @@ def tecla(tablero):
 
         else :
             print("Tecla no valida")
-#############
-#3
+         
 def limpiar_consola():
     if os.name == 'nt': 
         _ = os.system('cls')
     else:  
         _ = os.system('clear')
+
+def mostrar_instrucciones():
+    print("\n--- Reglas de 2048 ---")
+    print ("Juego clasico")
+    print("Mueve las fichas en el tablero en cuatro direcciones (arriba, abajo, izquierda, derecha)")
+    print("Cuando dos fichas con el mismo número se tocan, se fusionan en una sola ficha con el doble de valor")
+    print("El objetivo es alcanzar la ficha 2048")
+    print("El juego termina cuando el tablero está lleno y no quedan movimientos posibles\n")
+    print("Juego 1v1")
+    print("En este modo de juego coopetiras con un amigo por ver quien consigue el numero mas alto")
+    print("Cada uno jugara una partida casual del juego 2048, y el que obtenga el numero mas grande gana")
+    print("Si ambos jugadores llegan al mismo numero ganara el que lo alla logrado en menos movimientos\n")
+    print("Juego 1vsIA")
+    print("En este modo de juego competiras con una inteligencia artificial")
+    print("Para poder ganar deberas superar a la IA")
+    print("---------------------\n")
+    input("Presiona Enter para volver al menú principal...")
 
 def modo_1v1():
     print("Necesitas amigos para jugar este juego??? ")
